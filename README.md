@@ -1,0 +1,2 @@
+# RL78_Board_IAR
+RL78开发板工程,芯片为R5F100LG,64PIN,128K ROM,支持DataFlash,
