@@ -17,3 +17,10 @@ IAR/Projects/ProjectFiles/ProjectBase/settings/ProjectBase.Release.cspy.ps1
 *.wsdt
 *.log
 *.pbd
+*.db
+*.ipch
+*.opendb
+.vs/RL78_Board_IAR/v15/.suo
+*.json
+*.ps1
+*.dnx
