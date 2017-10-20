@@ -1,0 +1,130 @@
+#ifndef __RF78G13_OPTION_BYTES_H_
+#define __RF78G13_OPTION_BYTES_H_
+#include "MacroDriver.h"
+
+/*片上选项字节1*/
+/*看门狗使用间隔中断*/
+#define OPTION_BYTES_WDT_INT_ON                     0x80U
+
+/*看门狗间隔中断的比例,当大于这个比例的时候,间隔中断被触发*/
+#define OPTION_BYTES_WDT_WINDOW_RATIO_50            0x20U
+#define OPTION_BYTES_WDT_WINDOW_RATIO_75            0x40U
+#define OPTION_BYTES_WDT_WINDOW_RATIO_100           0x60U
+
+/*启用看门狗计时器计数*/
+#define OPTION_BYTES_WDT_ON                         0x10U
+
+/*看门狗计数器的溢出时间 FIL = 17.25KHZ MAX*/
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_6_FIL      0X00U
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_7_FIL      0X02U
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_8_FIL      0X04U
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_9_FIL      0X06U
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_11_FIL     0X08U
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_13_FIL     0X0AU
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_14_FIL     0X0CU
+#define OPTION_BYTES_WDT_OVERFLOW_TIME_2_16_FIL     0X0DU
+
+/*看门狗计数器在HALT/STOP模式的时候仍然计数*/
+#define OPTION_BYTES_WDT_HALT_ON                    0x01U
+
+
+
+/*片上选项字节2*/
+/*LVD模式设置*/
+#define OPTION_BYTES_LVD_MODE_RESET_INT             0x02U
+#define OPTION_BYTES_LVD_MODE_RESET                 0x03U
+#define OPTION_BYTES_LVD_MODE_INT                   0x01U
+#define OPTION_BYTES_LVD_MODE_OFF                   0x81U
+
+/*LVD用作中断复位模式时,其下降沿电平*/
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LDVL_1_63   0X00U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LDVL_1_84   0X20U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LDVL_2_45   0X40U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LDVL_2_75   0X70U
+
+/*LVD用作中断复位模式时,其LVDH 上升沿电平和下降沿电平*/
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_1_77   0X08U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_1_88   0X04U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_2_92   0X00U
+
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_1_98   0X08U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_2_09   0X04U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_3_13   0X00U
+
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_2_61   0X08U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_2_71   0X04U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_3_35   0X00U
+
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_2_92   0X08U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_3_02   0X04U
+#define OPTION_BYTES_LVD_MODE_RESET_INT_LVDH_4_46   0X00U
+
+/*LVD用作复位模式时,其LVD上升沿电平和下降沿电平*/
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_1_67        0x0CU 
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_1_77        0x08U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_1_88        0x2CU
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_1_98        0x28U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_2_09        0x24U 
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_2_50        0x4CU
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_2_61        0x48U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_2_71        0x44U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_2_81        0x6CU 
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_2_92        0x68U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_3_02        0x64U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_3_13        0x20U
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_3_75        0x40U 
+#define OPTION_BYTES_LVD_MODE_RESET_LVD_4_06        0x60U
+
+/*LVD用作中断模式时,其LVD上升沿电平和下降沿电平*/
+#define OPTION_BYTES_LVD_MODE_INT_LVD_1_67          0x0CU 
+#define OPTION_BYTES_LVD_MODE_INT_LVD_1_77          0x08U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_1_88          0x2CU
+#define OPTION_BYTES_LVD_MODE_INT_LVD_1_98          0x28U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_2_09          0x24U 
+#define OPTION_BYTES_LVD_MODE_INT_LVD_2_50          0x4CU
+#define OPTION_BYTES_LVD_MODE_INT_LVD_2_61          0x48U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_2_71          0x44U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_2_81          0x6CU 
+#define OPTION_BYTES_LVD_MODE_INT_LVD_2_92          0x68U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_3_02          0x64U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_3_13          0x20U
+#define OPTION_BYTES_LVD_MODE_INT_LVD_3_75          0x40U 
+#define OPTION_BYTES_LVD_MODE_INT_LVD_4_06          0x60U
+                         
+
+
+/*片上选项字节3*/
+/*系统内部高速时钟模式*/
+/* 1.6 5.5区间,低电压主模式,可选范围1 4*/
+#define OPTION_BYTES_HSI_MODE_LV_1_4                0x00U 
+/*1.8 5.5区间,低速主模式,可选范围1 8*/
+#define OPTION_BYTES_HSI_MODE_LS_1_8                0x80U 
+/*2.4 5.5 区间,高速主模式,可选范围 1 16 ,2.7 5.5区间,可选范围 1 32*/
+#define OPTION_BYTES_HSI_MODE_HS_1_32               0xC0U
+         
+/*选择HSI主频,要和系统实际电压挂钩*/
+#define OPTION_BYTES_HSI_FREQ_32M                   0x08U
+#define OPTION_BYTES_HSI_FREQ_24M                   0x00U
+#define OPTION_BYTES_HSI_FREQ_16M                   0x09U
+#define OPTION_BYTES_HSI_FREQ_12M                   0x01U
+#define OPTION_BYTES_HSI_FREQ_8M                    0x0AU
+#define OPTION_BYTES_HSI_FREQ_4M                    0x0BU
+#define OPTION_BYTES_HSI_FREQ_1M                    0x0DU
+
+
+/*调试选项字节4*/
+/*禁止片上调试功能*/
+#define OPTION_BYTES_ON_CHIP_DEBUG_OFF              0x00U
+/*使能片上调试功能,片上调试安全ID验证失败的时候,擦除闪存数据*/
+#define OPTION_BYTES_ON_CHIP_DEBUG_ON_ERASR         0x80U
+/*允许片上调试,片上调试安全ID失败,不擦除闪存数据*/
+#define OPTION_BYTES_ON_CHIP_DEBUG_ON_NO_ERASE      0x81U
+
+
+
+#endif
+
+
+
+
+
