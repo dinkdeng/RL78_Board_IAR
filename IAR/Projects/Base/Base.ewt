@@ -1086,6 +1086,15 @@
             <file>
                 <name>$PROJ_DIR$\..\..\Common\inc\MacroDriver.h</name>
             </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Clock.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_OptionBytes.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Port.h</name>
+            </file>
         </group>
         <group>
             <name>Linker</name>
@@ -1095,6 +1104,12 @@
         </group>
         <group>
             <name>src</name>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Clock.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Port.c</name>
+            </file>
         </group>
     </group>
     <group>
