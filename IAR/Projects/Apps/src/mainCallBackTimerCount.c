@@ -3,8 +3,9 @@
 #include "DDIL_Uart_Config.h"
 #include "DDIL_ExtKey_Config.h"
 #include "DDIL_BEEP_Config.h"
+#include "DDIL_TimerCount.h"
 
-void mainCallBackBeep()
+void mainCallBackTimerCount()
 {
     EI();
     /*延时函数注册*/
@@ -21,6 +22,8 @@ void mainCallBackBeep()
         ExtKey_BoardWaitStatus);
     /*BEEP驱动注册*/
     DDIL_Beep_Register(DDIL_BEEP_INDEX_0, Beep_Init, Beep_Set);
+    /*定时计数器注册*/
+    DDIL_TimerCount_Register(DDIL_TIMER_COUNT_INDEX_0, TimerCount_Init, TimerCount_Start, TimerCount_Stop);
 
     /*Delay延时函数初始化*/
     DDIL_Delay_Init(DDIL_DELAY_INDEX_0);
@@ -35,14 +38,15 @@ void mainCallBackBeep()
     DDIL_EXTKEY_STATUS extKeyStatus = DDIL_EXTKEY_STATUS_NONE;
     /*BEEP初始化*/
     DDIL_Beep_Init(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_OFF);
+    /*初始化定时计数器*/
+    DDIL_TimerCount_Init(DDIL_TIMER_COUNT_INDEX_0, TimerCountCallBack);
+    /*启动定时器*/
+    DDIL_TimerCount_Start(DDIL_TIMER_COUNT_INDEX_0);
 
     while (1)
     {
         //printf("RL78 Board Uart0 Test\r\n");
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
-        DDIL_Led_Set(DDIL_LED_INDEX_0, DDIL_LED_STATUS_ON);
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
-        DDIL_Led_Set(DDIL_LED_INDEX_0, DDIL_LED_STATUS_OFF);
+        //LED0用作定时器触发
         DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
         DDIL_Led_Set(DDIL_LED_INDEX_1, DDIL_LED_STATUS_ON);
         DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
@@ -69,10 +73,13 @@ void mainCallBackBeep()
             if (extKeyStatus == DDIL_EXTKEY_STATUS_1)
             {
                 DDIL_Beep_Set(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_ON);
+                /*定时器停止*/
+                DDIL_TimerCount_Stop(DDIL_TIMER_COUNT_INDEX_0);
             }
             else
             {
                 DDIL_Beep_Set(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_OFF);
+                DDIL_TimerCount_Start(DDIL_TIMER_COUNT_INDEX_0);
             }
             extKeyStatus = DDIL_EXTKEY_STATUS_NONE;
         }

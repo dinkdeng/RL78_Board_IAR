@@ -1,10 +1,9 @@
 #include "DDIL_Delay_Config.h"
 #include "DDIL_LED_Config.h"
 #include "DDIL_Uart_Config.h"
-#include "DDIL_ExtKey_Config.h"
-#include "DDIL_BEEP_Config.h"
+#include "DDIL_ADC_Config.h"
 
-void mainCallBackBeep()
+void mainCallBackADC()
 {
     EI();
     /*延时函数注册*/
@@ -16,11 +15,8 @@ void mainCallBackBeep()
     /*串口驱动注册*/
     DDIL_Uart_Register(Uart0_Init, Uart0_SendChar, Uart0_SendBuffer, Uart0_SendString,
         Uart0_ReadRecv, Uart0_ClearRecv);
-    /*外部按键检测注册*/
-    DDIL_ExtKey_Register(DDIL_EXTKEY_INDEX_0, ExtKey_BoardInit, ExtKey_BoardGetStatus,
-        ExtKey_BoardWaitStatus);
-    /*BEEP驱动注册*/
-    DDIL_Beep_Register(DDIL_BEEP_INDEX_0, Beep_Init, Beep_Set);
+    /*ADC端口注册*/
+    DDIL_ADC_Register(DDIL_ADC_0, Adc_Init, Adc_GetValueByChannel);
 
     /*Delay延时函数初始化*/
     DDIL_Delay_Init(DDIL_DELAY_INDEX_0);
@@ -30,26 +26,25 @@ void mainCallBackBeep()
     DDIL_Led_Init(DDIL_LED_INDEX_2, DDIL_LED_STATUS_OFF);
     /*串口初始化*/
     DDIL_Uart_Init(38400);
-    /*外部按键初始化*/
-    DDIL_ExtKey_Init(DDIL_EXTKEY_INDEX_0);
-    DDIL_EXTKEY_STATUS extKeyStatus = DDIL_EXTKEY_STATUS_NONE;
-    /*BEEP初始化*/
-    DDIL_Beep_Init(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_OFF);
+    /*ADC初始化*/
+    DDIL_ADC_Init(DDIL_ADC_0);
+    uint16_t adcValue = 0;
+    float volValue = 0;
 
     while (1)
     {
         //printf("RL78 Board Uart0 Test\r\n");
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
+        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 100);
         DDIL_Led_Set(DDIL_LED_INDEX_0, DDIL_LED_STATUS_ON);
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
+        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 100);
         DDIL_Led_Set(DDIL_LED_INDEX_0, DDIL_LED_STATUS_OFF);
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
+        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 100);
         DDIL_Led_Set(DDIL_LED_INDEX_1, DDIL_LED_STATUS_ON);
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
+        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 100);
         DDIL_Led_Set(DDIL_LED_INDEX_1, DDIL_LED_STATUS_OFF);
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
+        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 100);
         DDIL_Led_Set(DDIL_LED_INDEX_2, DDIL_LED_STATUS_ON);
-        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 50);
+        DDIL_Delay_DelayMs(DDIL_DELAY_INDEX_0, 100);
         DDIL_Led_Set(DDIL_LED_INDEX_2, DDIL_LED_STATUS_OFF);
         /*读取串口接收状态并原样发回去*/
         uint8_t* readBuffer;
@@ -62,19 +57,9 @@ void mainCallBackBeep()
             DDIL_Uart_ClearRecv();
             printf("Receive Package\r\n");
         }
-        DDIL_ExtKey_GetStatus(DDIL_EXTKEY_INDEX_0, &extKeyStatus);
-        if (extKeyStatus != DDIL_EXTKEY_STATUS_NONE)
-        {
-            printf("Key Value : %x\r\n", extKeyStatus);
-            if (extKeyStatus == DDIL_EXTKEY_STATUS_1)
-            {
-                DDIL_Beep_Set(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_ON);
-            }
-            else
-            {
-                DDIL_Beep_Set(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_OFF);
-            }
-            extKeyStatus = DDIL_EXTKEY_STATUS_NONE;
-        }
+        DDIL_ADC_GetValueByChannel(DDIL_ADC_0, 0, &adcValue);
+        volValue = ((adcValue*5.0) / 1024.0);
+        printf("ADC Value : %4u \r\n", adcValue);
+        printf("VolValue : %0.2f\r\n",volValue);
     }
 }

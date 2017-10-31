@@ -1,0 +1,42 @@
+#include "Beep.h"
+#include "RL78G13_Port.h"
+#include "RL78G13_Buzzer.h"
+
+
+/*蜂鸣器初始化*/
+
+DDIL_ERROR_CODE Beep_Init(DDIL_BEEP_STATUS initStatus)
+{
+    /*首先关闭蜂鸣器*/
+    RL78G13_BuzzerWriteOne(RL78G13_BUZZER_CHANNEL_0, RL78G13_BUZZER_ENABLE_MASK,
+        RL78G13_BUZZER_DISABLE);
+    /*引脚初始化,PCLBUZ0初始化 P14.0*/
+    RL78G13_Port_Init(PORT_INDEX14, PORT_BIT0, RL78G13_PORT_PMn0_MODE_OUTPUT,
+        RL78G13_PORT_Pn0_OUTPUT_0, RL78G13_PORT_PULLUP0_OFF, RL78G13_PORT_PIM0_TTL_OFF,
+        RL78G13_PORT_POM0_NCH_OFF, RL78G13_PORT_PMC0_DI_ON);
+    /*16M时钟Beep初始化*/
+    RL78G13_BuzzerWriteOne(RL78G13_BUZZER_CHANNEL_0, RL78G13_BUZZER_CLOCK_DIV_MASK,
+        RL78G13_BUZZER_CLOCK_FMAIN_DIV_8192);
+    Beep_Set(initStatus);
+    return DDIL_ERROR_NONE;
+}
+
+/*设置蜂鸣器状态*/
+
+DDIL_ERROR_CODE Beep_Set(DDIL_BEEP_STATUS status)
+{
+    if (status == DDIL_BEEP_STATUS_OFF)
+    {
+        RL78G13_BuzzerWriteOne(RL78G13_BUZZER_CHANNEL_0, RL78G13_BUZZER_ENABLE_MASK,
+            RL78G13_BUZZER_DISABLE);
+    }
+    else
+    {
+        RL78G13_BuzzerWriteOne(RL78G13_BUZZER_CHANNEL_0, RL78G13_BUZZER_ENABLE_MASK,
+            RL78G13_BUZZER_ENABLE);
+    }
+    return DDIL_ERROR_NONE;
+}
+
+
+

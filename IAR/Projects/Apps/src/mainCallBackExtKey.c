@@ -2,9 +2,8 @@
 #include "DDIL_LED_Config.h"
 #include "DDIL_Uart_Config.h"
 #include "DDIL_ExtKey_Config.h"
-#include "DDIL_BEEP_Config.h"
 
-void mainCallBackBeep()
+void mainCallBackExtKey()
 {
     EI();
     /*延时函数注册*/
@@ -17,10 +16,8 @@ void mainCallBackBeep()
     DDIL_Uart_Register(Uart0_Init, Uart0_SendChar, Uart0_SendBuffer, Uart0_SendString,
         Uart0_ReadRecv, Uart0_ClearRecv);
     /*外部按键检测注册*/
-    DDIL_ExtKey_Register(DDIL_EXTKEY_INDEX_0, ExtKey_BoardInit, ExtKey_BoardGetStatus,
+    DDIL_ExtKey_Register(DDIL_EXTKEY_INDEX_0, ExtKey_BoardInit,ExtKey_BoardGetStatus,
         ExtKey_BoardWaitStatus);
-    /*BEEP驱动注册*/
-    DDIL_Beep_Register(DDIL_BEEP_INDEX_0, Beep_Init, Beep_Set);
 
     /*Delay延时函数初始化*/
     DDIL_Delay_Init(DDIL_DELAY_INDEX_0);
@@ -33,8 +30,6 @@ void mainCallBackBeep()
     /*外部按键初始化*/
     DDIL_ExtKey_Init(DDIL_EXTKEY_INDEX_0);
     DDIL_EXTKEY_STATUS extKeyStatus = DDIL_EXTKEY_STATUS_NONE;
-    /*BEEP初始化*/
-    DDIL_Beep_Init(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_OFF);
 
     while (1)
     {
@@ -66,14 +61,6 @@ void mainCallBackBeep()
         if (extKeyStatus != DDIL_EXTKEY_STATUS_NONE)
         {
             printf("Key Value : %x\r\n", extKeyStatus);
-            if (extKeyStatus == DDIL_EXTKEY_STATUS_1)
-            {
-                DDIL_Beep_Set(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_ON);
-            }
-            else
-            {
-                DDIL_Beep_Set(DDIL_BEEP_INDEX_0, DDIL_BEEP_STATUS_OFF);
-            }
             extKeyStatus = DDIL_EXTKEY_STATUS_NONE;
         }
     }

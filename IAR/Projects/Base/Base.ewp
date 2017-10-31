@@ -108,7 +108,7 @@
                 </option>
                 <option>
                     <name>GenStackSize</name>
-                    <state>128</state>
+                    <state>256</state>
                 </option>
                 <option>
                     <name>GenNearHeapSize</name>
@@ -167,7 +167,7 @@
                 </option>
                 <option>
                     <name>GenStackOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
             </data>
         </settings>
@@ -966,10 +966,22 @@
                 <name>$PROJ_DIR$\..\Apps\src\mainApp.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Apps\src\mainCallBackADC.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Apps\src\mainCallBackBeep.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Apps\src\mainCallBackExtKey.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Apps\src\mainCallBackLed.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Apps\src\mainCallBackTimerCount.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Apps\src\mainCallBackUart0.c</name>
             </file>
         </group>
     </group>
@@ -990,13 +1002,31 @@
                 <name>$PROJ_DIR$\..\..\Common\inc\MacroDriver.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_ADC.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Buzzer.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Clock.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Int.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_KRM.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_OptionBytes.h</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Port.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Serial.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\inc\RL78G13_Timer.h</name>
             </file>
         </group>
         <group>
@@ -1008,10 +1038,28 @@
         <group>
             <name>src</name>
             <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_ADC.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Buzzer.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Clock.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Int.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_KRM.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Port.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Serial.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\Common\src\RL78G13_Timer.c</name>
             </file>
         </group>
     </group>
@@ -1056,6 +1104,9 @@
                 <name>$PROJ_DIR$\..\..\DDIL\inc\DDIL_NixieTube.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\DDIL\inc\DDIL_TimerCount.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\DDIL\inc\DDIL_Uart.h</name>
             </file>
         </group>
@@ -1092,6 +1143,9 @@
                 <name>$PROJ_DIR$\..\..\DDIL\src\DDIL_NixieTube.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\..\DDIL\src\DDIL_TimerCount.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\DDIL\src\DDIL_Uart.c</name>
             </file>
         </group>
@@ -1099,11 +1153,38 @@
     <group>
         <name>ProjectSupport</name>
         <group>
+            <name>DDIL_Config</name>
+            <file>
+                <name>$PROJ_DIR$\ProjectSupport\Config\DDIL_BEEP_Config.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\ProjectSupport\Config\DDIL_Delay_Config.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\ProjectSupport\Config\DDIL_ExtKey_Config.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\ProjectSupport\Config\DDIL_LED_Config.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\ProjectSupport\Config\DDIL_TimerCount_Config.h</name>
+            </file>
+        </group>
+        <group>
             <name>Impl</name>
             <group>
                 <name>inc</name>
                 <file>
+                    <name>$PROJ_DIR$\..\Impl\inc\adc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\inc\Beep.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Impl\inc\Delay.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\inc\ExtKey.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Impl\inc\Led.h</name>
@@ -1114,11 +1195,26 @@
                 <file>
                     <name>$PROJ_DIR$\..\Impl\inc\SystemUtil.h</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\inc\TimerCount.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\inc\Uart0.h</name>
+                </file>
             </group>
             <group>
                 <name>src</name>
                 <file>
+                    <name>$PROJ_DIR$\..\Impl\src\adc.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\src\Beep.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Impl\src\Delay.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\src\ExtKey.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Impl\src\Led.c</name>
@@ -1128,6 +1224,12 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\Impl\src\SystemUtil.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\src\TimerCount.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\Impl\src\Uart0.c</name>
                 </file>
             </group>
         </group>

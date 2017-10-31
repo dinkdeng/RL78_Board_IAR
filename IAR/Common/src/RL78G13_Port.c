@@ -77,6 +77,29 @@ void RL78G13_Port0_Init(PORT_BITS bit,uint8_t PMnSet,uint8_t PnSet,uint8_t PULLU
     PMC0 = regValue;
 }
 
+/**
+ * Function:    
+ *  void RL78G13_Port1_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,
+ *  uint8_t PIMSet, uint8_t POMSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 1 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出电平
+ *  PULLUPSet -     Set the pullup belongs to.是否上拉
+ *  PIMSet -        Set the pim belongs to.输入缓冲设置
+ *  POMSet -        Set the pom belongs to.输出缓冲设置
+ */
+
 void RL78G13_Port1_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet, uint8_t PIMSet,
     uint8_t POMSet)
 {
@@ -122,6 +145,24 @@ void RL78G13_Port1_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PU
     POM1 = regValue;
 }
 
+/**
+ * Function:        void RL78G13_Port2_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 2 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -       The bit.端口号
+ *  PMnSet -    Set the mn belongs to.输入输出
+ *  PnSet -     Set the pn belongs to.输出值
+ */
+
 void RL78G13_Port2_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet)
 {
     uint8_t regValue = 0;
@@ -141,6 +182,26 @@ void RL78G13_Port2_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet)
     /*写回寄存器*/
     P2 = regValue;
 }
+
+/**
+ * Function:    
+ *  void RL78G13_Port3_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 3 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出电平
+ *  PULLUPSet -     Set the pullup belongs to.上拉电阻
+ */
 
 void RL78G13_Port3_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet)
 {
@@ -170,6 +231,26 @@ void RL78G13_Port3_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PU
     PU3 = regValue;
 }
 
+/**
+ * Function:    
+ *  void RL78G13_Port4_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 4 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出值
+ *  PULLUPSet -     Set the pullup belongs to.上拉值
+ */
+
 void RL78G13_Port4_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet)
 {
     uint8_t regValue = 0;
@@ -197,6 +278,29 @@ void RL78G13_Port4_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PU
     /*写回寄存器*/
     PU4 = regValue;
 }
+
+/**
+ * Function:    
+ *  void RL78G13_Port5_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,
+ *  uint8_t PIMSet, uint8_t POMSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 5 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出设置
+ *  PnSet -         Set the pn belongs to.输出值
+ *  PULLUPSet -     Set the pullup belongs to.端口上哪
+ *  PIMSet -        Set the pim belongs to.输入缓冲
+ *  POMSet -        Set the pom belongs to.输出缓冲
+ */
 
 void RL78G13_Port5_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet, uint8_t PIMSet,
     uint8_t POMSet)
@@ -243,6 +347,24 @@ void RL78G13_Port5_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PU
     POM5 = regValue;
 }
 
+/**
+ * Function:        void RL78G13_Port6_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 6 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -       The bit.端口号
+ *  PMnSet -    Set the mn belongs to.输入输出
+ *  PnSet -     Set the pn belongs to.输出值
+ */
+
 void RL78G13_Port6_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet)
 {
     uint8_t regValue = 0;
@@ -262,6 +384,28 @@ void RL78G13_Port6_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet)
     /*写回寄存器*/
     P6 = regValue;
 }
+
+/**
+ * Function:    
+ *  void RL78G13_Port7_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,
+ *  uint8_t POMSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 7 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出值
+ *  PULLUPSet -     Set the pullup belongs to.上拉电阻
+ *  POMSet -        Set the pom belongs to.输出缓冲
+ */
 
 void RL78G13_Port7_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet, uint8_t POMSet)
 {
@@ -299,6 +443,28 @@ void RL78G13_Port7_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PU
     POM7 = regValue;
 }
 
+/**
+ * Function:    
+ *  void RL78G13_Port12_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,
+ *  uint8_t PMCSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 12 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出值
+ *  PULLUPSet -     Set the pullup belongs to.上拉电阻
+ *  PMCSet -        Set the pmc belongs to.输出模式
+ */
+
 void RL78G13_Port12_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,uint8_t PMCSet)
 {
     uint8_t regValue = 0;
@@ -335,6 +501,23 @@ void RL78G13_Port12_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t P
     PMC12 = regValue;
 }
 
+/**
+ * Function:        void RL78G13_Port13_Init(PORT_BITS bit, uint8_t PnSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 13 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -       The bit.端口号
+ *  PnSet -     Set the pn belongs to.输出值
+ */
+
 void RL78G13_Port13_Init(PORT_BITS bit, uint8_t PnSet)
 {
     uint8_t regValue = 0;
@@ -347,6 +530,28 @@ void RL78G13_Port13_Init(PORT_BITS bit, uint8_t PnSet)
     /*写回寄存器*/
     P13 = regValue;
 }
+
+/**
+ * Function:    
+ *  void RL78G13_Port14_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,
+ *  uint8_t PMCSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port 14 init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出值
+ *  PULLUPSet -     Set the pullup belongs to.端口上拉电阻
+ *  PMCSet -        Set the pmc belongs to.端口模式
+ */
 
 void RL78G13_Port14_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet,  uint8_t PMCSet)
 {
@@ -384,6 +589,30 @@ void RL78G13_Port14_Init(PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t P
     PMC14 = regValue;
 }
 
+/**
+ * Function:    
+ *  void RL78G13_Port_Init(PORT_INDEX index, PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet,
+ *  uint8_t PULLUPSet, uint8_t PIMSet, uint8_t POMSet, uint8_t PMCSet)
+ *
+ * Brief:
+ *      Rl 78 g 13 port init.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ *
+ * Param:
+ *  index -         Zero-based index of the.端口序号
+ *  bit -           The bit.端口号
+ *  PMnSet -        Set the mn belongs to.输入输出
+ *  PnSet -         Set the pn belongs to.输出值
+ *  PULLUPSet -     Set the pullup belongs to.上拉电阻
+ *  PIMSet -        Set the pim belongs to.输入缓冲
+ *  POMSet -        Set the pom belongs to.输出缓冲
+ *  PMCSet -        Set the pmc belongs to.输出模式
+ */
 
 void RL78G13_Port_Init(PORT_INDEX index, PORT_BITS bit, uint8_t PMnSet, uint8_t PnSet, uint8_t PULLUPSet, uint8_t PIMSet,
     uint8_t POMSet, uint8_t PMCSet)
@@ -426,7 +655,18 @@ void RL78G13_Port_Init(PORT_INDEX index, PORT_BITS bit, uint8_t PMnSet, uint8_t 
     }
 }
 
-
+/**
+ * Function:        void RL78G13_Port_Init_User()
+ *
+ * Brief:
+ *      Rl 78 g 13 port init user.
+ *
+ * Author:
+ *      Dink
+ *
+ * Date:
+ *      2017/10/24
+ */
 
 void RL78G13_Port_Init_User()
 {

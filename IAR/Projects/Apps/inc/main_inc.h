@@ -5,7 +5,15 @@ extern void mainCallBackLed();
 
 extern void mainCallBackBeep();
 
-#define MAIN_CALL_FUNC()    mainCallBackLed();
+extern void mainCallBackUart0();
+
+extern void mainCallBackExtKey();
+
+extern void mainCallBackTimerCount();
+
+extern void mainCallBackADC();
+
+#define MAIN_CALL_FUNC()    mainCallBackADC();
 
 #endif
 

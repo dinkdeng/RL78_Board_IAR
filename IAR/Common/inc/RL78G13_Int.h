@@ -1,0 +1,156 @@
+#ifndef __RL78G13_INT_H_
+#define __RL78G13_INT_H_
+#include "MacroDriver.h"
+
+
+/*系统中断中断源设定*/
+typedef enum RL78G13_INT_SRC
+{
+    RL78G13_INT_SRC_RST             = 0X00U,
+    RL78G13_INT_SRC_DBG             = 0X00U,
+    RL78G13_INT_SRC_WDTI            = 0X00U,
+    RL78G13_INT_SRC_LVI             = 0X01U,
+    RL78G13_INT_SRC_P0              = 0X02U,
+    RL78G13_INT_SRC_P1              = 0X03U,
+    RL78G13_INT_SRC_P2              = 0X04U,
+    RL78G13_INT_SRC_P3              = 0X05U,
+    RL78G13_INT_SRC_P4              = 0X06U,
+    RL78G13_INT_SRC_P5              = 0X07U,
+
+    RL78G13_INT_SRC_CSI20_IIC20_ST2 = 0X08U,
+    RL78G13_INT_SRC_CSI21_IIC21_SR2 = 0X09U,
+    RL78G13_INT_SRC_SRE2_TM11H      = 0X0AU,
+    RL78G13_INT_SRC_DMA0            = 0X0BU,
+    RL78G13_INT_SRC_DMA1            = 0X0CU,
+    RL78G13_INT_SRC_CSI00_IIC00_ST0 = 0X0DU,
+    RL78G13_INT_SRC_CSI01_IIC01_SR0 = 0X0EU,
+    RL78G13_INT_SRC_SRE0_TM01       = 0X0FU,
+
+    RL78G13_INT_SRC_CSI10_IIC10_ST1 = 0X10U,
+    RL78G13_INT_SRC_CSI11_IIC11_SR1 = 0X11U,
+    RL78G13_INT_SRC_SRE1_TM03H      = 0X12U,
+    RL78G13_INT_SRC_IICA0           = 0X13U,
+    RL78G13_INT_SRC_TM00            = 0X14U,
+    RL78G13_INT_SRC_TM01            = 0X15U,
+    RL78G13_INT_SRC_TM02            = 0X16U,
+    RL78G13_INT_SRC_TM03            = 0X17U,
+
+    RL78G13_INT_SRC_AD              = 0X18U,
+    RL78G13_INT_SRC_RTC             = 0X19U,
+    RL78G13_INT_SRC_IT              = 0X1AU,
+    RL78G13_INT_SRC_KR              = 0X1BU,
+    RL78G13_INT_SRC_CSI30_IIC30_ST3 = 0X1CU,
+    RL78G13_INT_SRC_CSI31_IIC31_SR3 = 0X1DU,
+    RL78G13_INT_SRC_TM13            = 0X1EU,
+    RL78G13_INT_SRC_TM04            = 0X1FU,
+
+    RL78G13_INT_SRC_TM05            = 0X20U,
+    RL78G13_INT_SRC_TM06            = 0X21U,
+    RL78G13_INT_SRC_TM07            = 0X22U,
+    RL78G13_INT_SRC_P6              = 0X23U,
+    RL78G13_INT_SRC_P7              = 0X24U,
+    RL78G13_INT_SRC_P8              = 0X25U,
+    RL78G13_INT_SRC_P9              = 0X26U,
+    RL78G13_INT_SRC_P10             = 0X27U,
+
+    RL78G13_INT_SRC_P11             = 0X28U,
+    RL78G13_INT_SRC_TM10            = 0X29U,
+    RL78G13_INT_SRC_TM11            = 0X2AU,
+    RL78G13_INT_SRC_TM12            = 0X2BU,
+    RL78G13_INT_SRC_SRE3_TM13H      = 0X2CU,
+    RL78G13_INT_SRC_MD              = 0X2DU,
+    RL78G13_INT_SRC_IICA1           = 0X2EU,
+    RL78G13_INT_SRC_FL              = 0X2FU,
+
+    RL78G13_INT_SRC_DMA2            = 0X30U,
+    RL78G13_INT_SRC_DMA3            = 0X31U,
+    RL78G13_INT_SRC_TM14            = 0X32U,
+    RL78G13_INT_SRC_TM15            = 0X33U,
+    RL78G13_INT_SRC_TM16            = 0X34U,
+    RL78G13_INT_SRC_TM17            = 0X35U,
+}RL78G13_INT_SRC;
+
+/*系统中断优先级设定*/
+typedef enum RL78G13_INT_PRI
+{
+    RL78G13_INT_PRI_0 = 0X00,
+    RL78G13_INT_PRI_1 = 0X01,
+    RL78G13_INT_PRI_2 = 0X02,
+    RL78G13_INT_PRI_3 = 0X03,
+}RL78G13_INT_PRI;
+
+/*系统外部中断源设定*/
+typedef enum RL78G13_INT_EXT_SRC
+{
+    RL78G13_INT_EXT_SRC_0 = 0X00U,
+    RL78G13_INT_EXT_SRC_1 = 0X01U,
+    RL78G13_INT_EXT_SRC_2 = 0X02U,
+    RL78G13_INT_EXT_SRC_3 = 0X03U,
+    RL78G13_INT_EXT_SRC_4 = 0X04U,
+    RL78G13_INT_EXT_SRC_5 = 0X05U,
+    RL78G13_INT_EXT_SRC_6 = 0X06U,
+    RL78G13_INT_EXT_SRC_7 = 0X07U,
+    RL78G13_INT_EXT_SRC_8 = 0X08U,
+    RL78G13_INT_EXT_SRC_9 = 0X09U,
+    RL78G13_INT_EXT_SRC_10 = 0X0AU,
+    RL78G13_INT_EXT_SRC_11 = 0X0BU,
+}RL78G13_INT_EXT_SRC;
+
+/*系统外部中断类型设定*/
+typedef enum RL78G13_INT_EXT_TYPE
+{
+    RL78G13_INT_EXT_TYPE_DISABLE = 0x00,
+    RL78G13_INT_EXT_TYPE_FALLING = 0x01,
+    RL78G13_INT_EXT_TYPE_RISING  = 0x02,
+    RL78G13_INT_EXT_TYPE_ALL     = 0x03,
+}RL78G13_INT_EXT_TYPE;
+
+/*系统当前中断标志位是否触发,当进入中断函数之后,标志位自动清零*/
+typedef enum RL78G13_INT_FLAG
+{
+    RL78G13_INT_FLAG_OFF = 0,
+    RL78G13_INT_FLAG_ON  = 1,
+}RL78G13_INT_FLAG;
+
+/*系统当前中断是否被屏蔽或使能*/
+typedef enum RL78G13_INT_STATUS
+{
+    RL78G13_INT_STATUS_ENABLE = 0X00U,
+    RL78G13_INT_STATUS_DISABLE = 0X01U,
+}RL78G13_INT_STATUS;
+
+/*读取中断标志位状态*/
+RL78G13_INT_FLAG RL78G13_Int_Flag_Read(RL78G13_INT_SRC intSrc);
+/*清除中断标志位状态*/
+void RL78G13_Int_Flag_Clear(RL78G13_INT_SRC intSrc);
+
+/*读取中断屏蔽状态*/
+RL78G13_INT_STATUS RL78G13_Int_Status_Read(RL78G13_INT_SRC intSrc);
+/*写入中断使能或屏蔽状态*/
+void RL78G13_Int_Status_Write(RL78G13_INT_SRC intSrc, RL78G13_INT_STATUS status);
+
+/*读取中断优先级*/
+RL78G13_INT_PRI RL78G13_Int_Pri_Read(RL78G13_INT_SRC intSrc);
+/*写入指定中断优先级*/
+void RL78G13_Int_Pri_Write(RL78G13_INT_SRC intSrc, RL78G13_INT_PRI priSet);
+
+/*读取外部中断设定状态*/
+RL78G13_INT_EXT_TYPE RL78G13_Int_Ext_Read(RL78G13_INT_EXT_SRC extSrc);
+/*写入外部中断设定状态*/
+void RL78G13_Int_Ext_Set(RL78G13_INT_EXT_SRC extSrc, RL78G13_INT_EXT_TYPE type);
+
+
+
+
+
+
+
+
+
+#endif
+
+
+
+
+
+

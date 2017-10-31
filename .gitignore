@@ -25,3 +25,5 @@ IAR/Projects/ProjectFiles/ProjectBase/settings/ProjectBase.Release.cspy.ps1
 *.ps1
 *.dnx
 *.sqlite
+*.sqlite
+*.sqlite
